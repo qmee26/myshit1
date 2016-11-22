@@ -3,7 +3,7 @@
 Pre-requistes:
 
 1. one android device or emulator should be in running state with USB debugging mode.
-2. check it with commad: adb devices
+2. check it with command: adb devices
 3. You don't need to run appium app as I have put appium server as java command in project inbuilt
 
 Steps to Run the Project:
