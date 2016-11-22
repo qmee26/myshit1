@@ -14,8 +14,10 @@ public class LoginTestCase extends BaseTestCase
 	public void loginIntoApp(){
 		try {
 			Assert.assertTrue(launchScreen.verifyLaunchScreen());
+			
 			launchScreen.tapOnLoginButton();
 			Assert.assertTrue(loginScreen.verifyLoginScreen());
+			
 			loginScreen.enterTextIntoEmailField(emailId);
 			loginScreen.enterTextIntoPasswordField(password);
 			loginScreen.tapOnLogin();
