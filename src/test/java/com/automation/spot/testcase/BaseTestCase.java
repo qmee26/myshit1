@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import junit.framework.Assert;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -26,7 +27,9 @@ public class BaseTestCase {
 	private static AppiumDriverLocalService serviceClient;
 	LaunchScreen launchScreen;
 	LoginScreen loginScreen;
-	
+
+	String emailId="prom1@dakota.com";
+	String password="abcde12345";
 	@BeforeSuite
 	public void beforeSuite() throws MalformedURLException{
 		startAppium();
@@ -74,6 +77,16 @@ public class BaseTestCase {
 		.withAppiumJS(new File(appiumPath)));
 
 		serviceClient.start();
+	}
+	
+	public void loginIntoApp(String email, String password) throws Exception{
+		launchScreen.tapOnLoginButton();
+		loginScreen.enterTextIntoEmailField(email);
+		loginScreen.enterTextIntoPasswordField(password);
+		loginScreen.tapOnLogin();
+		Assert.assertTrue(loginScreen.getDashboardScreenSource());
+		
+		
 	}
 
 }

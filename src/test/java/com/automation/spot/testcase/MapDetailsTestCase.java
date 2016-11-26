@@ -6,10 +6,14 @@ public class MapDetailsTestCase extends BaseTestCase
 {
 
 	@Test
-	public void loginIntoApp(){
+	public void verifyMapDetailsScreen(){
 		try {
+			loginIntoApp(emailId, password);
+			//tap on center of screen, will change the logic later on
 			
+			//swipe up on details link
 			
+			//verify elements
 			
 		} catch (Exception e) {
 			System.out.println("In Exception");

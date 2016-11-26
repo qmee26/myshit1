@@ -30,8 +30,7 @@ public class DriverInit {
 		File classpathRoot = new File(System.getProperty("user.dir"));
 		File appDir = new File(classpathRoot, "\\testdata\\apk");
 		File app = new File(appDir, apkName);
-		switch(deviceName){
-		case "Android Emulator":
+		if(deviceName.equalsIgnoreCase("Android Emulator")){
 			capabilities = new DesiredCapabilities();
 			capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android"); 
 			capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "6.0.0");
@@ -42,7 +41,9 @@ public class DriverInit {
 			capabilities.setCapability("app", app.getAbsolutePath());
 			capabilities.setCapability("appPackage", appPackage);
 			capabilities.setCapability("appActivity", appActivity);
-			break;
+		}
+		else{
+			//can place code for other device
 		}
 		return capabilities;
 	}

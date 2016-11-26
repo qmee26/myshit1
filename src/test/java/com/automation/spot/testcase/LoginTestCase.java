@@ -7,8 +7,6 @@ import org.testng.annotations.Test;
 public class LoginTestCase extends BaseTestCase
 {
 
-	private String emailId="prom1@dakota.com";
-	private String password="abcde12345";
 
 	@Test
 	public void loginIntoApp(){
