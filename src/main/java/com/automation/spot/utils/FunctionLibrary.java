@@ -80,55 +80,52 @@ public class FunctionLibrary extends DriverInit{
 	public WebElement getElement(String locatorName) {
 
 		//		String locatorKeyVal = env.getProperty(locatorName);
-		String locatorStrategy = locatorName.split(":")[0];
-		String locatorValue = locatorName.split(":")[1];
+		String locatorStrategy = locatorName.split(",")[0];
+		String locatorValue = locatorName.split(",")[1];
 		WebElement element = null;
 
 		switch (locatorStrategy) {
 		case "AccessibilityID":
-			element = FindElement(MobileBy.AccessibilityId(locatorValue));
+			element=driver.findElementByAccessibilityId(locatorValue);
 			break;
 		case "Class":
-			element = FindElement(MobileBy.className(locatorValue));
+			element=driver.findElementByClassName(locatorValue);
 			break;
 		case "Xpath":
-			element = FindElement(MobileBy.xpath(locatorValue));
-			break;
-		case "AndroidUIAutomator":
-			element = FindElement(MobileBy.AndroidUIAutomator(locatorValue));
+			element=driver.findElementByXPath(locatorValue);
 			break;
 		case "Css":
-			element = FindElement(MobileBy.cssSelector(locatorValue));
+			element=driver.findElementByCssSelector(locatorValue);
 			break;
 		case "Id":
-			element = FindElement(MobileBy.id(locatorValue));
+			element=driver.findElementById(locatorValue);
 			break;
 		case "Tag":
-			element = FindElement(MobileBy.tagName(locatorValue));
+			element=driver.findElementByTagName(locatorValue);
 			break;
 		case "LinkText":
-			element = FindElement(MobileBy.linkText(locatorValue));
+			element=driver.findElementByLinkText(locatorValue);
 			break;
 		case "PartialLinkText":
-			element = FindElement(MobileBy.partialLinkText(locatorValue));
+			element=driver.findElementByPartialLinkText(locatorValue);
 			break;
 		}
 		return element;
 	}
 
-	private WebElement FindElement(By locator){
-		WebElement element = null;
-		for(int i=0;i<10;i++){
-			try{
-				element = driver.findElement(locator);
-				break;
-			}
-			catch(NoSuchElementException e){
-				continue;
-			}
-		}
-		return element;
-	}
+//	private WebElement FindElement(By locator){
+//		WebElement element = null;
+//		for(int i=0;i<10;i++){
+//			try{
+//				element = driver.findElement(locator);
+//				break;
+//			}
+//			catch(NoSuchElementException e){
+//				continue;
+//			}
+//		}
+//		return element;
+//	}
 
 	public void takeScreenShot(String fileName) {
 		// TODO Auto-generated method stub
@@ -175,7 +172,9 @@ public class FunctionLibrary extends DriverInit{
 				continue;
 			}
 		}
-
 	}
 
+	public void getSourceOfScreen() {
+		System.out.println("source: "+driver.getPageSource());
+	}
 }

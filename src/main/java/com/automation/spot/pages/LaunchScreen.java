@@ -5,13 +5,20 @@ import com.automation.spot.OR.LaunchScreen_OR;
 
 
 public class LaunchScreen extends BasePage{
-	
-	public void tapOnLoginButton() throws Exception{
-		WebElement element=functionLibrary.getElement("Id:"+LaunchScreen_OR.loginButton);
-		functionLibrary.clickOnGivenElement(element);
+	public WebElement getLoginButton(){
+		return functionLibrary.getElement("Id,"+LaunchScreen_OR.loginButton);
 	}
 	
-	public void verifyLaunchScreen(){
-		
+	public WebElement getSignUpButton(){
+		return functionLibrary.getElement("Id,"+LaunchScreen_OR.signupButton);
+	}
+	
+	public void tapOnLoginButton() throws Exception{
+		functionLibrary.clickOnGivenElement(getLoginButton());
+	}
+	
+	public boolean verifyLaunchScreen(){
+		return functionLibrary.isElementPresent(getLoginButton())
+				&& functionLibrary.isElementPresent(getSignUpButton());
 	}
 }
