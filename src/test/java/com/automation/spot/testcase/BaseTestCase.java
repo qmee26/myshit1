@@ -17,6 +17,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
+import com.automation.spot.pages.DashboardScreen;
 import com.automation.spot.pages.LaunchScreen;
 import com.automation.spot.pages.LoginScreen;
 import com.automation.spot.utils.DriverInit;
@@ -27,7 +28,7 @@ public class BaseTestCase {
 	private static AppiumDriverLocalService serviceClient;
 	LaunchScreen launchScreen;
 	LoginScreen loginScreen;
-
+	DashboardScreen dashboardScreen;
 	String emailId="prom1@dakota.com";
 	String password="abcde12345";
 	@BeforeSuite
@@ -48,7 +49,8 @@ public class BaseTestCase {
 		DriverInit.startDriver();
 				
 		launchScreen=new LaunchScreen();
-		loginScreen=new LoginScreen();	
+		loginScreen=new LoginScreen();
+		dashboardScreen=new DashboardScreen();
 	}
 
 	public static void startAppium() {

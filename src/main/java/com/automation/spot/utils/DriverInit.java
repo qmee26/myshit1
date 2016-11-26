@@ -13,7 +13,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class DriverInit {
 	public static AppiumDriver<? extends WebElement> driver;
-	static String deviceName="Android Emulator";
+//	static String deviceName="Android Emulator";
+	static String deviceName="Letv";
 
 	public static void startDriver() throws MalformedURLException
 	{
@@ -26,6 +27,7 @@ public class DriverInit {
 		String apkName="Spot.apk";
 		String appPackage="com.verizon.npd.spot";
 		String appActivity="com.verizon.npd.spot.views.ItemsActivity";
+		String appWaitActivity="com.verizon.npd.spot.views.IntroductionActivity";
 		DesiredCapabilities capabilities = null;
 		File classpathRoot = new File(System.getProperty("user.dir"));
 		File appDir = new File(classpathRoot, "\\testdata\\apk");
@@ -42,8 +44,21 @@ public class DriverInit {
 			capabilities.setCapability("appPackage", appPackage);
 			capabilities.setCapability("appActivity", appActivity);
 		}
-		else{
-			//can place code for other device
+		else if(deviceName.equalsIgnoreCase("Letv")){
+			capabilities = new DesiredCapabilities();
+			capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android"); 
+			capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "6.0");
+			capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Le 1s");
+			capabilities.setCapability(MobileCapabilityType.UDID, "8LS4SC8PHQ4PKJW4");
+			capabilities.setCapability("locale", "US");
+			capabilities.setCapability("deviceReadyTimeout", "450");  //Timeout in seconds while waiting for device to become ready
+			capabilities.setCapability("newCommandTimeout", "600000");		
+			capabilities.setCapability("app", app.getAbsolutePath());
+			capabilities.setCapability("appPackage", appPackage);
+			capabilities.setCapability("appActivity", appActivity);
+			capabilities.setCapability("appWaitActivity", appWaitActivity);
+ 
+			
 		}
 		return capabilities;
 	}

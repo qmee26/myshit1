@@ -1,6 +1,8 @@
 package com.automation.spot.utils;
 
 import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,6 +10,7 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
@@ -176,5 +179,21 @@ public class FunctionLibrary extends DriverInit{
 
 	public void getSourceOfScreen() {
 		System.out.println("source: "+driver.getPageSource());
+	}
+	
+	public void swipeUpOnGivenElement(WebElement ele) throws Exception {
+		int x=ele.getLocation().getX();
+		int y=ele.getLocation().getY();
+		driver.swipe(x, y, x, y-30, 1000);
+		waitTime(3000);
+	}
+
+	public void tapOnMiddleOfTheScreen() {
+		Dimension dimensions = driver.manage().window().getSize();
+		int x = dimensions.getWidth();
+		int y = dimensions.getHeight();
+		TouchAction swipe = new TouchAction(driver);
+		swipe.tap(x/2, y/2);
+//		driver.tap(1, x, y, duration);
 	}
 }

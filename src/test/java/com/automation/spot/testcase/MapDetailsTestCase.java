@@ -10,7 +10,7 @@ public class MapDetailsTestCase extends BaseTestCase
 		try {
 			loginIntoApp(emailId, password);
 			//tap on center of screen, will change the logic later on
-			
+			dashboardScreen.tapOnMiddleLocation();
 			//swipe up on details link
 			
 			//verify elements
