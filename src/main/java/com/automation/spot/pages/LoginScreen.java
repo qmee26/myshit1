@@ -29,6 +29,7 @@ public class LoginScreen extends BasePage{
 	
 	public void tapOnLogin() throws Exception{
 		functionLibrary.clickOnGivenElement(getLoginBtn());
+		functionLibrary.waitTime(5000);
 	}
 	
 	public boolean verifyLoginScreen(){

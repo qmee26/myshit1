@@ -44,8 +44,8 @@ public class FunctionLibrary extends DriverInit{
 	public List<? extends WebElement> getElementList(String locatorName) {
 
 		//		String locatorKeyVal = env.getProperty(locatorName);
-		String locatorStrategy = locatorName.split(":")[0];
-		String locatorValue = locatorName.split(":")[1];
+		String locatorStrategy = locatorName.split(",")[0];
+		String locatorValue = locatorName.split(",")[1];
 		List<? extends WebElement> elementList = null;
 
 		switch (locatorStrategy) {
@@ -65,7 +65,7 @@ public class FunctionLibrary extends DriverInit{
 			elementList = driver.findElements(MobileBy.cssSelector(locatorValue));
 			break;
 		case "Id":
-			elementList = driver.findElements(MobileBy.id(locatorValue));
+			elementList = driver.findElementsById(locatorValue);
 			break;
 		case "Tag":
 			elementList = driver.findElements(MobileBy.tagName(locatorValue));
@@ -151,7 +151,7 @@ public class FunctionLibrary extends DriverInit{
 
 	public void clickOnGivenElement(WebElement ele) throws Exception {
 		ele.click();
-		waitTime(3000);
+		waitTime(5000);
 	}
 
 	public void selectTheValueFromDropdown(WebElement ele, String value) throws Exception {
@@ -193,7 +193,8 @@ public class FunctionLibrary extends DriverInit{
 		int x = dimensions.getWidth();
 		int y = dimensions.getHeight();
 		TouchAction swipe = new TouchAction(driver);
-		swipe.tap(x/2, y/2);
-//		driver.tap(1, x, y, duration);
+		swipe.tap(x/2, y/2).perform();
+		System.out.println("source: "+driver.getPageSource());
+
 	}
 }

@@ -18,6 +18,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
 import com.automation.spot.pages.DashboardScreen;
+import com.automation.spot.pages.ItemsScreen;
 import com.automation.spot.pages.LaunchScreen;
 import com.automation.spot.pages.LoginScreen;
 import com.automation.spot.utils.DriverInit;
@@ -29,6 +30,7 @@ public class BaseTestCase {
 	LaunchScreen launchScreen;
 	LoginScreen loginScreen;
 	DashboardScreen dashboardScreen;
+	ItemsScreen itemsScreen;
 	String emailId="prom1@dakota.com";
 	String password="abcde12345";
 	@BeforeSuite
@@ -51,6 +53,7 @@ public class BaseTestCase {
 		launchScreen=new LaunchScreen();
 		loginScreen=new LoginScreen();
 		dashboardScreen=new DashboardScreen();
+		itemsScreen=new ItemsScreen();
 	}
 
 	public static void startAppium() {

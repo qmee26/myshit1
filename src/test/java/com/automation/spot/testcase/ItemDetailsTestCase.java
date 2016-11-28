@@ -2,18 +2,23 @@ package com.automation.spot.testcase;
 
 import org.testng.annotations.Test;
 
-public class MapDetailsTestCase extends BaseTestCase
+public class ItemDetailsTestCase extends BaseTestCase
 {
 
 	@Test
-	public void verifyMapDetailsScreen(){
+	public void verifyItemDetailsScreen(){
 		try {
 			loginIntoApp(emailId, password);
 			//tap on center of screen, will change the logic later on
 			dashboardScreen.tapOnMiddleLocation();
-			//swipe up on details link
+			//tap up on Item link
+			dashboardScreen.tapOnItemLink("AUTOMATION");
 			
-			//verify elements
+			dashboardScreen.tapOnSpecificItemLink();
+
+			itemsScreen.tapOnDetailsLink();
+			
+			//verification part for details
 			
 		} catch (Exception e) {
 			System.out.println("In Exception");
